@@ -1,6 +1,6 @@
 import Mascot from "./Mascot.jsx";
 import Skills from "./Skills.jsx";
-import { FaBrain, FaMicrophone, FaGraduationCap, FaMicrochip, FaCode, FaWind, FaGithub, FaLinkedinIn, FaEnvelope, FaGlobe } from "react-icons/fa6";
+import { FaBrain, FaMicrophone, FaGraduationCap, FaMicrochip, FaCode, FaWind, FaGithub, FaLinkedinIn, FaEnvelope, FaGlobe, FaTrophy, FaMedal, FaAward, FaStar } from "react-icons/fa6";
 import {
   profile,
   traits,
