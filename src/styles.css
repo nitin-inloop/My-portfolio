@@ -423,19 +423,39 @@ img { max-width: 100%; display: block; }
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 .xp {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 12px 0;
+  flex-direction: column;
+  padding: 14px 10px;
+  border-radius: 12px;
   cursor: pointer;
   user-select: none;
   background: transparent;
+  transition: background-color 0.2s ease;
+}
+.xp:hover,
+.xp.is-open {
+  background: rgba(255, 255, 255, 0.02);
 }
 
-/* tinted glyph tile — colour with a job to do, not decoration */
+.xp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.xp-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
 .xp-ico {
   flex: none;
   display: grid;
@@ -443,12 +463,12 @@ img { max-width: 100%; display: block; }
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1;
   color: var(--tint);
   background: #0d1117;
   border: 1px solid var(--line);
-  opacity: 0.88;
+  opacity: 0.9;
   transition: opacity 0.18s, transform 0.18s, filter 0.18s, border-color 0.18s;
 }
 .xp:hover .xp-ico,
@@ -467,46 +487,24 @@ img { max-width: 100%; display: block; }
   background: #0b0e12;
 }
 
-.xp-main { flex: 1; min-width: 0; padding-top: 1px; }
-.xp-main h3 {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 15.5px;
+.xp-info {
+  flex: 1;
+  min-width: 0;
+  padding-top: 1px;
+}
+.xp-info h3 {
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.015em;
+  color: var(--text);
+  line-height: 1.3;
 }
-.xp-type {
-  font-style: normal;
-  font-size: 10.5px;
-  font-weight: 500;
-  color: var(--text-2);
-  background: var(--raise);
-  border: 1px solid var(--line-2);
-  border-radius: 999px;
-  padding: 2px 9px;
+.xp-role {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-top: 2px;
+  line-height: 1.35;
 }
-.xp-role { font-size: 13px; color: var(--text-3); margin-top: 1px; }
-
-/* Collapsible detail transition */
-.xp-detail-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin-top 0.25s ease;
-  opacity: 0;
-  margin-top: 0;
-}
-.xp:hover .xp-detail-wrapper,
-.xp.is-open .xp-detail-wrapper {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  margin-top: 8px;
-}
-.xp-detail-inner {
-  overflow: hidden;
-}
-.xp-detail { font-size: 13.5px; color: var(--text-2); max-width: 62ch; line-height: 1.55; }
 
 .xp-right {
   display: flex;
@@ -519,17 +517,19 @@ img { max-width: 100%; display: block; }
 }
 .xp-years {
   display: block;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text);
   white-space: nowrap;
   letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 .xp-sub {
   display: block;
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--text-3);
   white-space: nowrap;
+  line-height: 1.35;
 }
 
 .xp-chevron {
@@ -545,6 +545,31 @@ img { max-width: 100%; display: block; }
 .xp.is-open .xp-chevron {
   transform: rotate(180deg);
   color: var(--text-2);
+}
+
+/* Collapsible detail transition */
+.xp-detail-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin-top 0.25s ease;
+  opacity: 0;
+  margin-top: 0;
+  padding-left: 54px;
+}
+.xp:hover .xp-detail-wrapper,
+.xp.is-open .xp-detail-wrapper {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 10px;
+}
+.xp-detail-inner {
+  overflow: hidden;
+}
+.xp-detail {
+  font-size: 13px;
+  color: var(--text-2);
+  max-width: 64ch;
+  line-height: 1.6;
 }
 
 /* ---------------- achievements ---------------- */
@@ -942,29 +967,24 @@ footer {
   .card-links a { font-size: 11.5px; padding: 5px 11px; min-height: 32px; }
   .more { width: 100%; justify-content: center; padding: 11px 16px; font-size: 13px; margin-top: 14px; }
 
-  .xp { flex-wrap: wrap; row-gap: 6px; padding: 10px 0; }
-  .xp-ico, .xp-logo { width: 36px; height: 36px; border-radius: 9px; font-size: 19px; }
-  .xp-main h3 { font-size: 14.5px; }
-  .xp-role { font-size: 12.5px; }
+  .xp { padding: 8px 0; gap: 4px; }
+  .xp-header { gap: 8px; }
+  .xp-left { gap: 10px; }
+  .xp-ico, .xp-logo { width: 34px; height: 34px; border-radius: 8px; font-size: 17px; }
+  .xp-info h3 { font-size: 13.5px; }
+  .xp-role { font-size: 11.5px; }
+  .xp-right { gap: 1px; }
+  .xp-years { font-size: 11.5px; }
+  .xp-sub { font-size: 11px; }
+  .xp-chevron { font-size: 10px; margin-top: 2px; }
+  .xp-detail-wrapper { padding-left: 44px; }
   .xp-detail { font-size: 12px; line-height: 1.5; }
-  .xp-right {
-    order: 3;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 48px;
-    padding-top: 2px;
-    text-align: left;
-  }
-  .xp-years { font-size: 12px; }
-  .xp-sub { font-size: 11.5px; }
 
   .ach { flex-wrap: wrap; row-gap: 6px; padding: 8px 0; }
-  .ach-ico, .ach-logo { width: 36px; height: 36px; border-radius: 9px; font-size: 18px; }
-  .ach-main h3 { font-size: 14px; }
-  .ach-main p { font-size: 12px; }
-  .ach-rank { order: 3; margin-left: 48px; font-size: 10.5px; padding: 3px 9px; }
+  .ach-ico, .ach-logo { width: 34px; height: 34px; border-radius: 8px; font-size: 17px; }
+  .ach-main h3 { font-size: 13.5px; }
+  .ach-main p { font-size: 11.5px; }
+  .ach-rank { order: 3; margin-left: 44px; font-size: 10px; padding: 3px 8px; }
 
   .edu { padding: 14px; flex-direction: column; align-items: flex-start; gap: 10px; }
   .edu-main strong { font-size: 14px; }
@@ -989,4 +1009,11 @@ footer {
 
 @media (max-width: 420px) {
   .hero-cta .btn { width: 100%; flex: 1 1 100%; }
+  .xp-left { gap: 8px; }
+  .xp-ico, .xp-logo { width: 32px; height: 32px; font-size: 16px; }
+  .xp-info h3 { font-size: 12.5px; }
+  .xp-role { font-size: 11px; }
+  .xp-years { font-size: 11px; }
+  .xp-sub { font-size: 10.5px; }
+  .xp-detail-wrapper { padding-left: 0; }
 }
