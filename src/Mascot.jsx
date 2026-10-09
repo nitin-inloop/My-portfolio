@@ -1,4 +1,5 @@
-/* Pixel-art robot mascot, drawn as an SVG grid — crisp at any size, no image asset. */
+/* Pixel-art robot, drawn as an SVG grid — crisp at any size, no image asset.
+   It strolls along the rail above the footer and turns around at each end. */
 const GRID = [
   "....W.....W....",
   "....D.....D....",
@@ -14,10 +15,10 @@ const GRID = [
 ];
 
 const COLORS = {
-  B: "#8b7cf6", // body
-  D: "#5b49cf", // shade / mouth / antenna
-  W: "#f4f1ff", // eyes / antenna tips
-  L: "#c3b9ff", // blush
+  B: "#2ea043", // body
+  D: "#1a6b2c", // shade / mouth / antenna
+  W: "#56d4dd", // eyes / antenna tips
+  L: "#46e05f", // cheek glow
 };
 
 export default function Mascot() {
@@ -29,16 +30,14 @@ export default function Mascot() {
       }
     });
   });
+
   return (
-    <div className="mascot" aria-hidden="true">
-      <svg viewBox="0 0 15 11" shapeRendering="crispEdges" role="img" aria-label="Pixel robot mascot">
-        {pixels}
-      </svg>
-      <span className="spark s1">✦</span>
-      <span className="spark s2">✚</span>
-      <span className="spark s3">●</span>
-      <span className="spark s4">✦</span>
-      <span className="spark s5">◆</span>
+    <div className="rail" aria-hidden="true">
+      <div className="walker">
+        <svg viewBox="0 0 15 11" shapeRendering="crispEdges" className="walker-sprite">
+          {pixels}
+        </svg>
+      </div>
     </div>
   );
 }
