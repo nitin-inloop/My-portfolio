@@ -169,7 +169,7 @@ export const projects = [
     status: "Award",
     tags: ["NASA Space Apps", "Forecasting", "Time Series"],
     stack: ["python", "pandas", "sklearn", "react"],
-    desc: "Winner at the NASA Space Apps Challenge '25 — a weather model that forecasts up to a year of future dates, trained on NASA POWER API observations from 2006 to 2024.",
+    desc: "Winner at the NASA Space Apps Challenge '25, a Future weather prediction model that forecasts up to a year of future dates, trained on NASA POWER API observations from 2006 to 2024.",
     repo: "https://github.com/nitinog10/AtmoPredict",
     live: "",
   },
