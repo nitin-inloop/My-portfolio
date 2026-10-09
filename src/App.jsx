@@ -103,13 +103,14 @@ export default function App() {
       {/* ---------- experience ---------- */}
       <section id="experience">
         <SecTitle>Experience</SecTitle>
-        <div className="exp-card">
-          {experience.map((e) => (
-            <div className="exp-row" key={e.role + e.org}>
-              <span className="exp-years">{e.years}</span>
-              <div className="exp-main">
+        <div className="tl">
+          {experience.map((e, i) => (
+            <div className={`tl-item ${i % 2 ? "right" : "left"}`} key={e.role + e.org}>
+              <span className="tl-node" aria-hidden="true" />
+              <div className="tl-card">
+                <span className="tl-years">{e.years}</span>
                 <strong>{e.role}</strong>
-                <span className="exp-org">{e.org}</span>
+                <span className="tl-org">@ {e.org}</span>
                 <p>{e.desc}</p>
               </div>
             </div>
@@ -118,13 +119,19 @@ export default function App() {
 
         <div className="honors">
           <span className="honors-label">★ Honors</span>
-          <div className="honors-grid">
-            {honors.map((h) => (
-              <div className={h.counter ? "honor counter" : "honor"} key={h.title}>
-                <strong>{h.title}</strong>
-                <span>{h.sub}</span>
-              </div>
-            ))}
+          <div className="stickers">
+            {honors.map((h, i) => {
+              const HonorIcon = [FaTrophy, FaMedal, FaAward, FaStar][i % 4];
+              return (
+                <div className={`sticker st-${i % 4}`} key={h.title}>
+                  <HonorIcon aria-hidden="true" />
+                  <div>
+                    <strong>{h.title}</strong>
+                    <span>{h.sub}</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -133,6 +140,10 @@ export default function App() {
           <div className="edu-main">
             <strong>{education.degree}</strong>
             <span>{education.school}</span>
+          </div>
+          <div className="edu-progress">
+            <span className="edu-progress-label">degree.exe — 50% compiled</span>
+            <div className="bar"><div className="bar-fill" style={{ width: "50%" }} /></div>
           </div>
         </div>
       </section>
@@ -178,39 +189,28 @@ export default function App() {
       {/* ---------- contact ---------- */}
       <section id="contact">
         <SecTitle>Contact</SecTitle>
-        <div className="contact-grid">
-          <a className="ct-card wide" href={`mailto:${profile.email}`}>
-            <span className="ct-ico violet"><FaEnvelope /></span>
-            <div className="ct-body">
-              <span className="ct-kind">EMAIL</span>
-              <strong>{profile.email}</strong>
-            </div>
-            <span className="ct-arrow" aria-hidden="true">↗</span>
+        <div className="contact-box">
+          <span className="cb-spark c1" aria-hidden="true">✦</span>
+          <span className="cb-spark c2" aria-hidden="true">✚</span>
+          <span className="cb-spark c3" aria-hidden="true">✦</span>
+          <span className="cb-spark c4" aria-hidden="true">●</span>
+          <span className="cb-script">say hello ✦</span>
+          <h2>Let's build something real.</h2>
+          <p className="cb-sub">Open to AI engineering roles, collaborations, and ambitious problems.</p>
+          <a className="cb-email" href={`mailto:${profile.email}`}>
+            <FaEnvelope aria-hidden="true" /> {profile.email}
           </a>
-          <a className="ct-card" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-            <span className="ct-ico linkedin"><FaLinkedinIn /></span>
-            <div className="ct-body">
-              <span className="ct-kind">LINKEDIN</span>
-              <strong>{profile.linkedinLabel}</strong>
-            </div>
-            <span className="ct-arrow" aria-hidden="true">↗</span>
-          </a>
-          <a className="ct-card violet" href={profile.portfolio} target="_blank" rel="noopener noreferrer">
-            <span className="ct-ico ondark"><FaGlobe /></span>
-            <div className="ct-body">
-              <span className="ct-kind">PORTFOLIO</span>
-              <strong>{profile.portfolioLabel}</strong>
-            </div>
-            <span className="ct-arrow" aria-hidden="true">↗</span>
-          </a>
-          <a className="ct-card dark wide" href={profile.github} target="_blank" rel="noopener noreferrer">
-            <span className="ct-ico ondark"><FaGithub /></span>
-            <div className="ct-body">
-              <span className="ct-kind">GITHUB</span>
-              <strong>{profile.githubLabel}</strong>
-            </div>
-            <span className="ct-arrow" aria-hidden="true">↗</span>
-          </a>
+          <div className="cb-links">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer">
+              <FaGithub aria-hidden="true" /> GitHub
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+              <FaLinkedinIn aria-hidden="true" /> LinkedIn
+            </a>
+            <a href={profile.portfolio} target="_blank" rel="noopener noreferrer">
+              <FaGlobe aria-hidden="true" /> Portfolio
+            </a>
+          </div>
         </div>
       </section>
 
