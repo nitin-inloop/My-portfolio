@@ -10,12 +10,10 @@ export const profile = {
   github: "https://github.com/nitinog10",
   githubUser: "nitinog10",
   githubLabel: "github.com/nitinog10",
-  portfolio: "https://nitinn.dev",
-  portfolioLabel: "nitinn.dev",
   linkedin: "https://www.linkedin.com/in/nitin-k-mishra-520615331",
   linkedinLabel: "in/nitin-k-mishra",
   // Fill these in to light up the matching pills in the hero. Empty = hidden.
-  twitter: "",
+  twitter: "https://x.com/Nitin101_",
   resume: "/NitinResume.pdf",
 };
 
