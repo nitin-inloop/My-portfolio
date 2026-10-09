@@ -3,11 +3,22 @@ import { FaGithub, FaArrowRight } from "react-icons/fa6";
 import { TechRow } from "./techIcons.jsx";
 import { projects, profile } from "./data.js";
 
-const INITIAL = 5;
+const INITIAL = 6;
 
 function Card({ p }) {
+  const [active, setActive] = useState(false);
+
   return (
-    <article className="card">
+    <article
+      className={`card ${active ? "is-active" : ""}`}
+      onClick={(e) => {
+        if (e.target.closest("a")) return;
+        setActive((prev) => !prev);
+      }}
+      tabIndex={0}
+      role="region"
+      aria-label={p.name}
+    >
       <div className={p.fit === "contain" ? "card-shot contain" : "card-shot"}>
         <img src={p.img} alt={`${p.name} screenshot`} loading="lazy" decoding="async" />
       </div>
@@ -29,12 +40,12 @@ function Card({ p }) {
               <TechRow keys={p.stack} />
               <div className="card-links">
                 {p.repo && (
-                  <a href={p.repo} target="_blank" rel="noopener noreferrer">
+                  <a href={p.repo} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                     <FaGithub aria-hidden="true" /> Code
                   </a>
                 )}
                 {p.live && (
-                  <a href={p.live} target="_blank" rel="noopener noreferrer">
+                  <a href={p.live} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                     View <FaArrowRight aria-hidden="true" />
                   </a>
                 )}

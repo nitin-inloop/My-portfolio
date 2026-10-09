@@ -1,11 +1,10 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 /* Live GitHub contribution graph.
-   GitHub's own contribution data isn't on the REST API, so we read it from the
-   public jogruber mirror. If that call fails we say so rather than draw fake squares. */
-const endpoint = (user) => `https://github-contributions-api.jogruber.de/v4/${user}?y=last`;
-const CACHE_KEY = (user) => `contrib:${user}`;
-const CACHE_TTL = 60 * 60 * 1000; // an hour is plenty for a graph of whole days
+   Fetches live contribution data (including private contributions if enabled on GitHub)
+   from gh-calendar with a fallback to jogruber mirror. */
+const CACHE_KEY = (user) => `contrib_v3:${user}`;
+const CACHE_TTL = 15 * 60 * 1000; // 15 mins
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -28,6 +27,33 @@ function writeCache(user, payload) {
   }
 }
 
+async function fetchContributionData(user, signal) {
+  try {
+    const res = await fetch(`https://gh-calendar.rschristian.dev/user/${user}`, { signal });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const d = await res.json();
+    if (!d?.contributions?.length) throw new Error("empty");
+    const flatDays = Array.isArray(d.contributions[0]) ? d.contributions.flat() : d.contributions;
+    const normalizedDays = flatDays.map((item) => ({
+      date: item.date,
+      count: item.count || 0,
+      level: Number(item.intensity ?? item.level ?? 0),
+    }));
+    return {
+      total: { lastYear: typeof d.total === "number" ? d.total : d.total?.lastYear || 0 },
+      contributions: normalizedDays,
+    };
+  } catch (err) {
+    if (err.name === "AbortError") throw err;
+    // Fallback to jogruber mirror
+    const res2 = await fetch(`https://github-contributions-api.jogruber.de/v4/${user}?y=last`, { signal });
+    if (!res2.ok) throw new Error(`HTTP ${res2.status}`);
+    const data = await res2.json();
+    if (!data?.contributions?.length) throw new Error("empty");
+    return data;
+  }
+}
+
 export function useContributions(user) {
   const [state, setState] = useState(() => {
     const cached = readCache(user);
@@ -37,10 +63,8 @@ export function useContributions(user) {
   useEffect(() => {
     if (state.status === "ok") return;
     const ac = new AbortController();
-    fetch(endpoint(user), { signal: ac.signal })
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
+    fetchContributionData(user, ac.signal)
       .then((data) => {
-        if (!data?.contributions?.length) throw new Error("empty");
         writeCache(user, data);
         setState({ status: "ok", data });
       })
@@ -87,7 +111,15 @@ const fmt = (iso) =>
 export default function Contributions({ user, profileUrl, state }) {
   const [tip, setTip] = useState(null);
   const tipRef = useRef(null);
+  const scrollRef = useRef(null);
   const { status, data } = state;
+
+  /* On initial render/load, scroll calendar to the right so current contributions are immediately visible on mobile */
+  useLayoutEffect(() => {
+    if (status === "ok" && scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth;
+    }
+  }, [status]);
 
   /* The tooltip is centered on its cell, so near the viewport edges half of it
      would hang off-screen — measure it after render and nudge it back inside. */
@@ -115,7 +147,7 @@ export default function Contributions({ user, profileUrl, state }) {
 
       <div className="cg-card">
         {status === "loading" && (
-          <div className="cg-scroll">
+          <div className="cg-scroll" ref={scrollRef}>
             <div className="cg-skeleton" aria-label="Loading contribution graph">
               {Array.from({ length: 53 * 7 }).map((_, i) => (
                 <i key={i} style={{ animationDelay: `${(i % 53) * 18}ms` }} />
@@ -135,7 +167,7 @@ export default function Contributions({ user, profileUrl, state }) {
 
         {status === "ok" && (
           <>
-            <div className="cg-scroll">
+            <div className="cg-scroll" ref={scrollRef}>
               <div className="cg-inner">
                 <div className="cg-months" aria-hidden="true">
                   {weeks.map((_, i) => (
@@ -157,6 +189,14 @@ export default function Contributions({ user, profileUrl, state }) {
                             key={day.date}
                             className="cg-cell"
                             data-level={day.level}
+                            onClick={(e) => {
+                              const r = e.currentTarget.getBoundingClientRect();
+                              setTip({
+                                x: r.left + r.width / 2,
+                                y: r.top,
+                                text: `${day.count || "No"} contribution${day.count === 1 ? "" : "s"} on ${fmt(day.date)}`,
+                              });
+                            }}
                             onMouseEnter={(e) => {
                               const r = e.currentTarget.getBoundingClientRect();
                               setTip({

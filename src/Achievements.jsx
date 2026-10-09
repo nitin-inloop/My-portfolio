@@ -22,7 +22,7 @@ export default function Achievements() {
           return (
             <li className="ach" key={a.title} style={{ "--tint": a.tint }}>
               <span className="ach-ico" aria-hidden="true">
-                <Icon />
+                {a.logo ? <img className="ach-logo" src={a.logo} alt="" loading="lazy" /> : <Icon />}
               </span>
 
               <div className="ach-main">
