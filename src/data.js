@@ -30,6 +30,17 @@ export const traits = ["Polymath", "Generalist", "AI Native", "Software Craftsma
 /* Fill `location` / `type` as you like — blank fields are simply not rendered. */
 export const experience = [
   {
+    org: "Bugbiceps.in",
+    role: "Cofounder",
+    years: "2025 — Present",
+    location: "",
+    type: "",
+    icon: "spark",
+    tint: "#38bdf8",
+    detail:
+      "A production studio which design, build and maintain the systems businesses actually run on: web platforms, mobile apps, AI pipelines and automation that stay fast and stable long after launch.",
+  },
+  {
     org: "Logorhythms",
     role: "Building",
     years: "2025 — Present",
