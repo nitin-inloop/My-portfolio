@@ -7,35 +7,39 @@ const INITIAL = 5;
 
 function Card({ p }) {
   return (
-    <article className={p.featured ? "card featured" : "card"}>
+    <article className="card">
       <div className={p.fit === "contain" ? "card-shot contain" : "card-shot"}>
         <img src={p.img} alt={`${p.name} screenshot`} loading="lazy" decoding="async" />
       </div>
 
-      <div className="card-body">
-        <div className="card-top">
+      <div className="card-overlay">
+        <div className="card-info">
           <h3>{p.name}</h3>
-          <span className={`chip chip-${p.status.toLowerCase()}`}>
-            <i aria-hidden="true" />
-            {p.status}
-          </span>
+          <div className="card-tags">
+            {p.tags && p.tags.slice(0, 2).map((tag, i) => (
+              <span key={i} className="chip">{tag}</span>
+            ))}
+          </div>
         </div>
 
-        <p>{p.desc}</p>
-
-        <div className="card-foot">
-          <TechRow keys={p.stack} />
-          <div className="card-links">
-            {p.repo && (
-              <a href={p.repo} target="_blank" rel="noopener noreferrer">
-                <FaGithub aria-hidden="true" /> Code
-              </a>
-            )}
-            {p.live && (
-              <a href={p.live} target="_blank" rel="noopener noreferrer">
-                View <FaArrowRight aria-hidden="true" />
-              </a>
-            )}
+        <div className="card-hover">
+          <div className="card-hover-inner">
+            <p className="card-desc-text">{p.desc}</p>
+            <div className="card-foot">
+              <TechRow keys={p.stack} />
+              <div className="card-links">
+                {p.repo && (
+                  <a href={p.repo} target="_blank" rel="noopener noreferrer">
+                    <FaGithub aria-hidden="true" /> Code
+                  </a>
+                )}
+                {p.live && (
+                  <a href={p.live} target="_blank" rel="noopener noreferrer">
+                    View <FaArrowRight aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
