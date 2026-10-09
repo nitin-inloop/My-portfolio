@@ -24,6 +24,7 @@ function Row({ item }) {
   return (
     <li
       className={`xp ${isOpen ? "is-open" : ""}`}
+      style={{ "--tint": item.tint || "#3fb950" }}
       onClick={() => setIsOpen((prev) => !prev)}
       role="button"
       tabIndex={0}
@@ -37,7 +38,7 @@ function Row({ item }) {
     >
       <div className="xp-header">
         <div className="xp-left">
-          <span className="xp-ico" style={{ "--tint": item.tint }} aria-hidden="true">
+          <span className="xp-ico" aria-hidden="true">
             {item.logo ? <img className="xp-logo" src={item.logo} alt="" loading="lazy" /> : <Icon />}
           </span>
 
