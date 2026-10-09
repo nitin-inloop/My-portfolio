@@ -35,6 +35,7 @@ export const experience = [
     years: "2025 — Present",
     location: "",
     type: "",
+    logo: "/bugbiceps.png",
     icon: "spark",
     tint: "#38bdf8",
     detail:
@@ -46,6 +47,7 @@ export const experience = [
     years: "2025 — Present",
     location: "Bhopal",
     type: "",
+    logo: "/logorhythms.png",
     icon: "spark",
     tint: "#a78bfa",
     detail:
@@ -57,6 +59,7 @@ export const experience = [
     years: "2026",
     location: "",
     type: "Internship",
+    logo: "/entoplearning.png",
     icon: "code",
     tint: "#60a5fa",
     detail: "Worked as full stack developer working on the learning management system for the students of US.",
@@ -67,6 +70,7 @@ export const experience = [
     years: "2026",
     location: "Remote",
     type: "",
+    logo: "/Gssoc26.png",
     icon: "people",
     tint: "#fbbf24",
     detail: "Mentoring contributors on the India's largest open source program on open Source & Agentic AI track.",
@@ -77,6 +81,7 @@ export const experience = [
     years: "2025",
     location: "",
     type: "",
+    logo: "/haronindia.png",
     icon: "brain",
     tint: "#5eead4",
     detail: "Worked as an ai developer Buidling ml model for crop disease identification and predicting the cure of the disease.",
@@ -87,6 +92,7 @@ export const experience = [
     years: "2025 — 26",
     location: "Bhopal",
     type: "",
+    logo: "/sacoist.png",
     icon: "cap",
     tint: "#f87171",
     detail: "Manged Alumni relations in college and organized multiple tech nd startup focused events for students of college collaborating with industries.",
@@ -135,7 +141,7 @@ export const achievements = [
 export const projects = [
   {
     name: "Logorhythms",
-    img: "/logorhythms.png",
+    img: "/docuverse.png",
     status: "Live",
     featured: true,
     tags: ["Organizational AI", "Knowledge", "Product"],
@@ -235,4 +241,4 @@ export const education = {
   progress: 50,
 };
 
-export const quote = "I'd rather ship the thing than pitch the thing.";
+export const quote = "Navigating the space between what is and what could be";

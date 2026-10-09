@@ -44,7 +44,7 @@ export default function App() {
             &ldquo;
           </span>
           <blockquote>{quote}</blockquote>
-          <cite>{profile.name}</cite>
+          <cite>— Nitin</cite>
           <Mascot />
         </section>
       </main>

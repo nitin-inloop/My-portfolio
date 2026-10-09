@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 /* Live GitHub contribution graph.
    GitHub's own contribution data isn't on the REST API, so we read it from the
@@ -86,7 +86,20 @@ const fmt = (iso) =>
 
 export default function Contributions({ user, profileUrl, state }) {
   const [tip, setTip] = useState(null);
+  const tipRef = useRef(null);
   const { status, data } = state;
+
+  /* The tooltip is centered on its cell, so near the viewport edges half of it
+     would hang off-screen — measure it after render and nudge it back inside. */
+  useLayoutEffect(() => {
+    const el = tipRef.current;
+    if (!tip || !el) return;
+    el.style.left = `${tip.x}px`;
+    const r = el.getBoundingClientRect();
+    const pad = 8;
+    if (r.left < pad) el.style.left = `${tip.x + (pad - r.left)}px`;
+    else if (r.right > window.innerWidth - pad) el.style.left = `${tip.x - (r.right - (window.innerWidth - pad))}px`;
+  }, [tip]);
 
   const weeks = useMemo(() => (data ? buildWeeks(data.contributions) : []), [data]);
   const labels = useMemo(() => monthLabels(weeks), [weeks]);
@@ -180,7 +193,7 @@ export default function Contributions({ user, profileUrl, state }) {
       </div>
 
       {tip && (
-        <div className="cg-tip" style={{ left: tip.x, top: tip.y }} role="status">
+        <div ref={tipRef} className="cg-tip" style={{ left: tip.x, top: tip.y }} role="status">
           {tip.text}
         </div>
       )}

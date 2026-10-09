@@ -456,6 +456,13 @@ img { max-width: 100%; display: block; }
   transform: scale(1.08);
   filter: drop-shadow(0 0 12px color-mix(in srgb, var(--tint) 55%, transparent));
 }
+.xp-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
 
 .xp-main { flex: 1; min-width: 0; }
 .xp-main h3 {
@@ -702,7 +709,7 @@ img { max-width: 100%; display: block; }
   font-size: clamp(19px, 3vw, 23px);
   font-style: italic;
   line-height: 1.5;
-  max-width: 22ch;
+  max-width: 30ch;
   margin: 28px auto 16px;
   color: var(--text);
 }

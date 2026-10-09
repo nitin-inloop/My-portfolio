@@ -14,7 +14,7 @@ function Row({ item }) {
   return (
     <li className="xp">
       <span className="xp-ico" style={{ "--tint": item.tint }} aria-hidden="true">
-        <Icon />
+        {item.logo ? <img className="xp-logo" src={item.logo} alt="" loading="lazy" /> : <Icon />}
       </span>
 
       <div className="xp-main">
