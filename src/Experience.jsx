@@ -35,32 +35,37 @@ function Row({ item }) {
         }
       }}
     >
-      <span className="xp-ico" style={{ "--tint": item.tint }} aria-hidden="true">
-        {item.logo ? <img className="xp-logo" src={item.logo} alt="" loading="lazy" /> : <Icon />}
-      </span>
+      <div className="xp-header">
+        <div className="xp-left">
+          <span className="xp-ico" style={{ "--tint": item.tint }} aria-hidden="true">
+            {item.logo ? <img className="xp-logo" src={item.logo} alt="" loading="lazy" /> : <Icon />}
+          </span>
 
-      <div className="xp-main">
-        <h3>{item.org}</h3>
-        <p className="xp-role">{item.role}</p>
-        <div className="xp-detail-wrapper">
-          <div className="xp-detail-inner">
-            <p className="xp-detail">{item.detail}</p>
+          <div className="xp-info">
+            <h3>{item.org}</h3>
+            <p className="xp-role">{item.role}</p>
           </div>
+        </div>
+
+        <div className="xp-right">
+          {item.years && <span className="xp-years">{item.years}</span>}
+          {(item.location || item.type) && (
+            <span className="xp-sub">
+              {item.location}
+              {item.location && item.type ? " · " : ""}
+              {item.type}
+            </span>
+          )}
+          <span className="xp-chevron" aria-hidden="true">
+            <FaChevronDown />
+          </span>
         </div>
       </div>
 
-      <div className="xp-right">
-        {item.years && <span className="xp-years">{item.years}</span>}
-        {(item.location || item.type) && (
-          <span className="xp-sub">
-            {item.location}
-            {item.location && item.type ? " · " : ""}
-            {item.type}
-          </span>
-        )}
-        <span className="xp-chevron" aria-hidden="true">
-          <FaChevronDown />
-        </span>
+      <div className="xp-detail-wrapper">
+        <div className="xp-detail-inner">
+          <p className="xp-detail">{item.detail}</p>
+        </div>
       </div>
     </li>
   );
