@@ -38,7 +38,7 @@ export const experience = [
     icon: "spark",
     tint: "#a78bfa",
     detail:
-      "Building a creative-tech practice where brand systems and web experiences are one discipline — now an AI brand-intelligence platform that takes an idea to a full visual identity.",
+      "Building a creative-tech practice where brand systems and web experiences are one discipline, now an AI brand-intelligence platform that takes an idea to a full visual identity.",
   },
   {
     org: "EnTop Learning",
