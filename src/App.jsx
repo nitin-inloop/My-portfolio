@@ -2,8 +2,8 @@ import { FaGithub, FaLinkedinIn, FaEnvelope, FaArrowUp } from "react-icons/fa6";
 import ProfileCard from "./ProfileCard.jsx";
 import Contributions, { useContributions } from "./Contributions.jsx";
 import Experience from "./Experience.jsx";
+import Achievements from "./Achievements.jsx";
 import Work from "./Work.jsx";
-import Skills from "./Skills.jsx";
 import Mascot from "./Mascot.jsx";
 import { Oneko } from "./oneko/index.js";
 import { profile, quote } from "./data.js";
@@ -24,8 +24,8 @@ export default function App() {
         <nav aria-label="Sections">
           <a href="#contributions">Activity</a>
           <a href="#experience">Experience</a>
+          <a href="#achievements">Achievements</a>
           <a href="#work">Work</a>
-          <a href="#stack">Stack</a>
         </nav>
         <a className="topbar-cta" href={`mailto:${profile.email}`}>
           Get in touch
@@ -36,8 +36,8 @@ export default function App() {
         <ProfileCard contributionTotal={total} />
         <Contributions user={profile.githubUser} profileUrl={profile.github} state={contributions} />
         <Experience />
+        <Achievements />
         <Work />
-        <Skills />
 
         <section className="quote-sec">
           <span className="quote-mark" aria-hidden="true">

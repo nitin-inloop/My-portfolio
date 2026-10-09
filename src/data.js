@@ -20,8 +20,8 @@ export const profile = {
 };
 
 export const bio = [
-  { text: "Products and Models — shipped end to end.", strong: true },
-  { text: "Designing AI systems that can reason, perceive, and act.", strong: true },
+  { text: "Products and Models shipped end to end.", strong: true },
+  { text: "Designing AI systems that can reason, perceive, and act." },
   { text: "Specializing in multimodal AI, LLM fine-tuning, MCP servers, and production-grade agentic architectures." },
 ];
 
@@ -82,11 +82,42 @@ export const experience = [
   },
 ];
 
-export const honors = [
-  { value: "Winner", label: "NASA Space Apps Challenge'25", note: "Regional winner · Global nominee", icon: "trophy", tint: "#fbbf24" },
-  { value: "Finalist", label: "OpenAI Builders Hackathon", note: "", icon: "medal", tint: "#7ee7ef" },
-  { value: "6×", label: "Hackathon wins", note: "", icon: "award", tint: "#a78bfa" },
-  { value: "19×", label: "Hackathon finalist", note: "", icon: "star", tint: "#f87171" },
+export const achievements = [
+  {
+    title: "NASA Space Apps Challenge '25",
+    note: "Regional winner · Global nominee",
+    rank: "Winner",
+    icon: "trophy",
+    tint: "#fbbf24",
+  },
+  {
+    title: "OpenAI Builders Hackathon",
+    note: "Selected among the best developers around globe.",
+    rank: "Finalist",
+    icon: "medal",
+    tint: "#7ee7ef",
+  },
+  {
+    title: "National Level Ideathon",
+    note: "",
+    rank: "Runner Up",
+    icon: "bulb",
+    tint: "#a78bfa",
+  },
+  {
+    title: "Hackathon wins",
+    note: "Across national level and uni level",
+    rank: "6×",
+    icon: "award",
+    tint: "#4ade80",
+  },
+  {
+    title: "Hackathon finalist",
+    note: "Shortlisted from open national pools",
+    rank: "19×",
+    icon: "star",
+    tint: "#f87171",
+  },
 ];
 
 /* `repo` / `live` are optional — links only render when the URL is present. */

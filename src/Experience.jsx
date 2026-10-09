@@ -1,5 +1,5 @@
 import { FaWandMagicSparkles, FaCode, FaPeopleGroup, FaBrain, FaGraduationCap } from "react-icons/fa6";
-import { experience, honors, education } from "./data.js";
+import { experience } from "./data.js";
 
 const icons = {
   spark: FaWandMagicSparkles,
@@ -46,29 +46,6 @@ export default function Experience() {
           <Row key={item.org + item.role} item={item} />
         ))}
       </ul>
-
-      <div className="honor-strip">
-        {honors.map((h) => (
-          <div className="honor" key={h.label}>
-            <strong>{h.value}</strong>
-            <span>{h.label}</span>
-            {h.note && <em>{h.note}</em>}
-          </div>
-        ))}
-      </div>
-
-      <div className="edu">
-        <div className="edu-main">
-          <strong>{education.degree}</strong>
-          <span>{education.school}</span>
-        </div>
-        <div className="edu-right">
-          <span className="edu-years">{education.years}</span>
-          <div className="edu-bar" role="img" aria-label={`${education.progress}% complete`}>
-            <div style={{ width: `${education.progress}%` }} />
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
