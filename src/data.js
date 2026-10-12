@@ -7,9 +7,9 @@ export const profile = {
   timezone: "Asia/Kolkata",
   available: "Products before Pitch Decks!",
   email: "nitiniszod10@gmail.com",
-  github: "https://github.com/nitinog10",
-  githubUser: "nitinog10",
-  githubLabel: "github.com/nitinog10",
+  github: "https://github.com/nitin-inloop",
+  githubUser: "nitin-inloop",
+  githubLabel: "github.com/nitin-inloop",
   linkedin: "https://www.linkedin.com/in/nitin-k-mishra-520615331",
   linkedinLabel: "in/nitin-k-mishra",
   // Fill these in to light up the matching pills in the hero. Empty = hidden.
