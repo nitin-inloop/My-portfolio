@@ -1,6 +1,5 @@
 import { FaGithub, FaLinkedinIn, FaEnvelope, FaArrowUp } from "react-icons/fa6";
 import ProfileCard from "./ProfileCard.jsx";
-import Contributions, { useContributions } from "./Contributions.jsx";
 import Experience from "./Experience.jsx";
 import Achievements from "./Achievements.jsx";
 import Work from "./Work.jsx";
@@ -9,9 +8,6 @@ import { Oneko } from "./oneko/index.js";
 import { profile, quote } from "./data.js";
 
 export default function App() {
-  // Fetched once here so the hero and the graph share a single request.
-  const contributions = useContributions(profile.githubUser);
-  const total = contributions.status === "ok" ? contributions.data.total.lastYear : null;
 
   return (
     <div className="page">
@@ -22,7 +18,6 @@ export default function App() {
           <span className="wordmark-stroke" aria-hidden="true" />
         </a>
         <nav aria-label="Sections">
-          <a href="#contributions">Activity</a>
           <a href="#experience">Experience</a>
           <a href="#achievements">Achievements</a>
           <a href="#work">Work</a>
@@ -33,8 +28,7 @@ export default function App() {
       </header>
 
       <main>
-        <ProfileCard contributionTotal={total} />
-        <Contributions user={profile.githubUser} profileUrl={profile.github} state={contributions} />
+        <ProfileCard />
         <Experience />
         <Achievements />
         <Work />

@@ -137,7 +137,7 @@ export const achievements = [
   {
     title: "Hackathon wins",
     note: "Across national level and uni level",
-    rank: "6×",
+    rank: "8×",
     logo: "/achievements/hackathon wins.gif",
     icon: "award",
     tint: "#4ade80",
