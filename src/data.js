@@ -192,7 +192,7 @@ export const projects = [
     tags: ["Diffusion", "LoRA", "SD v1.5", "PyTorch"],
     stack: ["python", "pytorch", "huggingface"],
     desc: "Resource conscious LoRA fine-tuning for Stable Diffusion v1.5. By targeting only the UNet attention layers, under 1% of parameters are trained which makes the whole thing viable on 12 GB of VRAM.",
-    repo: "https://github.com/nitinog10/DiffuMint-Stable-Diffusion-v1.5-LoRA-Fine-Tuning",
+    repo: "https://github.com/nitin-inloop/Stablediffusion-fine-tuned",
     live: "",
   },
   {
@@ -202,7 +202,7 @@ export const projects = [
     tags: ["Streamlit", "Geospatial", "ML"],
     stack: ["python", "pandas", "sklearn", "streamlit", "plotly"],
     desc: "Live AQI and pollutant data mapped and filterable across India, paired with month-wise state-level forecasts from a model trained on 24 years of historical readings.",
-    repo: "https://github.com/com-the-boys-dev/Air-Pulse-using-streamlit",
+    repo: "https://github.com/nitin-inloop/Airpulse",
     live: "",
   },
   {
@@ -222,17 +222,17 @@ export const projects = [
     tags: ["Voice AI", "XTTS-v2", "LoRA", "Whisper"],
     stack: ["python", "pytorch", "huggingface", "gradio"],
     desc: "AI that learns a person's vocal identity. Turns raw audio into a training set, auto-transcribes with Whisper, trains a memory-efficient LoRA adapter on XTTS-v2, and serves real-time inference through Gradio.",
-    repo: "https://github.com/nitinog10/SonicPersona",
+    repo: "https://github.com/nitin-inloop/Voicemodel",
     live: "",
   },
   {
-    name: "CortexDev",
+    name: "PyDev",
     img: "/projects/cortexdev.png",
     status: "Live",
     tags: ["Code LLM", "LoRA", "CodeGen-350M"],
     stack: ["python", "pytorch", "huggingface"],
     desc: "A lightweight CodeGen-350M fine-tune built to think like a developer,code-only responses with consistent structure and style, no commentary.",
-    repo: "https://github.com/nitinog10/CortexDev-Neural-intelligence-for-software-development",
+    repo: "https://github.com/nitin-inloop/Pydev",
     live: "",
   },
   {
