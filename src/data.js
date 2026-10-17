@@ -171,7 +171,7 @@ export const projects = [
     status: "Live",
     tags: ["Open Source", "NPM Package", "React", "Animation"],
     stack: ["react", "next", "node"],
-    desc: "An open-source animated React component library with 142 components across 6 collections — scroll animations, WebGL shaders, UI primitives, text effects, and more. Built with Motion, TypeScript, and scoped CSS Modules. Ships with 11 brand design-system presets (Vercel, Cursor, Claude, Framer, Apple, etc.). Every component is typed, SSR-safe, and respects reduced motion.",
+    desc: "An open-source animated React component library with 142 components across 6 collections:scroll animations, WebGL shaders, UI primitives, text effects, and more. Built with Motion, TypeScript, and scoped CSS Modules. Ships with 11 brand design-system presets (Vercel, Cursor, Claude, Framer, Apple, etc.). Every component is typed, SSR-safe, and respects reduced motion.",
     repo: "https://github.com/nitin-inloop/Motionfoundry.git",
     live: "https://motionfoundry-seven.vercel.app/",
   },
