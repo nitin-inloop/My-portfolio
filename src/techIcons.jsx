@@ -18,6 +18,7 @@ import {
   SiNodedotjs,
   SiSupabase,
   SiModelcontextprotocol,
+  SiTypescript,
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa6";
 import { RiOpenaiFill } from "react-icons/ri";
@@ -39,6 +40,7 @@ export const TECH = {
   postgres: { name: "PostgreSQL", Icon: SiPostgresql, color: "#5B8DEF" },
   plotly: { name: "Plotly", Icon: SiPlotly, color: "#7A76FF" },
   node: { name: "Node.js", Icon: SiNodedotjs, color: "#69B34C" },
+  typescript: { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
   supabase: { name: "Supabase", Icon: SiSupabase, color: "#3ECF8E" },
   openai: { name: "OpenAI", Icon: RiOpenaiFill, color: "#10A37F" },
   mcp: { name: "MCP", Icon: SiModelcontextprotocol, color: "#D6D9DE" },

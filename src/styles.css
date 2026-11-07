@@ -54,7 +54,7 @@ a:focus-visible,
 button:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 3px; border-radius: 6px; }
 img { max-width: 100%; display: block; }
 
-.page { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 24px; background: #000000; }
+.page { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 24px; background: #000000; }
 
 /* ---------------- topbar ---------------- */
 .topbar {
@@ -715,20 +715,34 @@ img { max-width: 100%; display: block; }
 .card-shot {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   background: #08090c;
 }
-.card-shot img {
-  width: 100%;
-  height: 100%;
+/* blurred, darkened copy that fills the space the screenshot doesn't cover */
+.card-shot-fill {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  max-width: none;
   object-fit: cover;
-  object-position: center;
+  filter: blur(22px) saturate(1.3) brightness(0.4);
+}
+/* the real screenshot, never cropped */
+.card-shot-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  transform-origin: top center;
+  -webkit-mask-image: linear-gradient(180deg, #000 90%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 90%, transparent 100%);
   transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.card:hover .card-shot img { transform: scale(1.05); }
-
-.card-shot.contain { background: #06070a; }
-.card-shot.contain img { object-fit: contain; object-position: center; }
-.card:hover .card-shot.contain img { transform: none; }
+.card:hover .card-shot-img { transform: scale(1.015); }
 
 .card-overlay {
   position: absolute;
@@ -737,10 +751,23 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   justify-content: flex-end;
   padding: 24px;
-  background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.95) 100%);
+  background: linear-gradient(180deg, transparent 48%, rgba(0,0,0,0.55) 74%, rgba(0,0,0,0.92) 100%);
   z-index: 10;
   pointer-events: none;
 }
+/* extra shade only while the description is open, so the text stays readable */
+.card-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.82) 55%, rgba(0,0,0,0.95) 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.card:hover .card-overlay::before,
+.card.is-active .card-overlay::before,
+.card:focus-within .card-overlay::before { opacity: 1; }
 
 .card-info {
   display: flex;
@@ -995,7 +1022,6 @@ footer {
   .sec-link { font-size: 12.5px; }
 
   .work-grid { grid-template-columns: 1fr; gap: 14px; }
-  .card { aspect-ratio: 16 / 11; }
   .card-overlay { padding: 16px; }
   .card-info h3 { font-size: 17px; }
   .chip { font-size: 10px; padding: 3px 8px; }

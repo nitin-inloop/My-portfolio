@@ -19,8 +19,10 @@ function Card({ p }) {
       role="region"
       aria-label={p.name}
     >
-      <div className={p.fit === "contain" ? "card-shot contain" : "card-shot"}>
-        <img src={p.img} alt={`${p.name} screenshot`} loading="lazy" decoding="async" />
+      {/* full screenshot on top; a blurred copy of the same image fills the rest of the card */}
+      <div className="card-shot">
+        <img className="card-shot-fill" src={p.img} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        <img className="card-shot-img" src={p.img} alt={`${p.name} screenshot`} loading="lazy" decoding="async" />
       </div>
 
       <div className="card-overlay">

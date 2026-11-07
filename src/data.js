@@ -28,6 +28,18 @@ export const traits = ["Polymath", "Generalist", "AI Native", "Software Craftsma
 /* Fill `location` / `type` as you like — blank fields are simply not rendered. */
 export const experience = [
   {
+    org: "Zappian",
+    role: "AI Intern",
+    years: "2026 — Present",
+    location: "",
+    type: "Internship",
+    logo: "/experience/zappian-icon.png",
+    icon: "brain",
+    tint: "#3096e1",
+    detail:
+      "Working as an AI intern at Zappian, a leading media buying product, building AI features that help advertisers plan, optimise and scale their campaigns.",
+  },
+  {
     org: "Logorhythms",
     role: "Building",
     years: "March 2026 — Present",
@@ -164,6 +176,26 @@ export const projects = [
     desc: "An AI-powered organizational intelligence platform that connects knowledge from Slack, GitHub, Notion, Jira, and meetings into a single intelligent workspace. It understands your organization's context, answers complex questions, summarizes information, and automates workflows. Instead of just storing data, Logorhythms becomes your company's second brain helping teams make faster, smarter, better-informed decisions.",
     repo: "",
     live: "https://logorhythms.in",
+  },
+  {
+    name: "Affordly",
+    img: "/projects/affordly.png",
+    status: "Live",
+    tags: ["FinTech", "Personal Finance", "MCP", "Account Aggregator"],
+    stack: ["react", "mcp"],
+    desc: "Answers \"Can I afford it?\" from your own bank data. Connects read-only through India's Account Aggregator framework, projects the money left at month-end from your balance, salary, committed bills and everyday spending, shows every step of the working, and says plainly when it doesn't know. Banks and UPI apps can plug the same affordability engine into their products through a single MCP URL.",
+    repo: "",
+    live: "https://affordly-black.vercel.app/",
+  },
+  {
+    name: "BackendFoundry",
+    img: "/projects/backendfoundry.png",
+    status: "Live",
+    tags: ["Open Source", "TypeScript", "Backend", "CLI"],
+    stack: ["typescript", "node", "next"],
+    desc: "An open-source ecosystem of backend primitives for production TypeScript: 12 modular components across 5 collections, covering rate limiting, idempotency, validation, caching, retries, circuit breakers, webhooks, logging, health checks and AI. Copy the source into your app with one CLI command or install the packages from npm. Every component is typed, SSR-safe and has zero runtime dependencies, and an interactive playground traces a live request through the pipeline.",
+    repo: "https://github.com/nitin-inloop/Backendfoundry.git",
+    live: "https://backendfoundry.vercel.app/",
   },
   {
     name: "MotionFoundry",
